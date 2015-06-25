@@ -1,5 +1,7 @@
 Flask==0.10.1
 Flask-Actions==0.6.6
+gevent==1.0.2
+greenlet==0.4.7
 itsdangerous==0.24
 Jinja2==2.7.3
 MarkupSafe==0.23
