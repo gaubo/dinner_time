@@ -16,12 +16,23 @@
 	        <br>
 	      </form>
 	    </div>
+	    <div id="event" align="center"></div>
+	    <br>
     </nav>
 
     {% block content %} 
     {% endblock content %}
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var eventOutputContainer = document.getElementById("event");
+		var evtSrc = new EventSource("/subscribe");
+
+		evtSrc.onmessage = function(e) {
+		    console.log(e.data);
+		    eventOutputContainer.innerHTML = e.data;
+		};
+	</script>
   </body>
 </body>
 </html>

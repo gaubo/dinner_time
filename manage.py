@@ -5,10 +5,10 @@ from flask import Flask
 from flaskext.actions import Manager
 import settings
 from dinnertime import app
-
-app.config.from_object(settings)
-manager = Manager(app)
+from gevent.wsgi import WSGIServer
 
 if __name__ == "__main__":
-    manager.run()
+    app.debug = True
+    server = WSGIServer(("", 5555), app)
+    server.serve_forever()
 
