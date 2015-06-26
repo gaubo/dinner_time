@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dinner Time!</title>
-
+	<link rel="icon" href="http://fortawesome.github.io/Font-Awesome/assets/ico/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -11,10 +11,27 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	</script>
 	<style>
-		.nav-block {
-			display:inline-block;
+		.dinner {
+			display: flex; /* equal height of the children */
+			flex-basis: 50px;
 		}
+		.menu {
+		    height: 600px;
+		}
+
+		.list-group {
+			  text-align: justify;
+/*			  border: 10px solid black;
+*/			  height: 600px;
+			  overflow: hidden;
+		}
+
+		/*.list-group-item {
+    		display: inline-block;
+		}*/
+
 	</style>
 
 	<style>
@@ -154,13 +171,12 @@
 	</div>
 
 	<br>
-
 	<form id="demo-2" role="form" method='POST' action='/' align="right">
 		<input type="search" placeholder="Search" name="url">
 	</form>
 	<br>
-
 	<div id="dinner_time_banner" align="center"></div>
+	<br>
     <div id='frameblock'>
 	    {% block content %} 
 	    {% endblock content %}
@@ -178,12 +194,12 @@
 		    	iFrameContainer.style.opacity = 0.2;
 		    	eventOutputContainer.style.opacity = 2.0;
 		    	eventOutputContainer.style.display = 'block';
-		    } else {
-		    	eventOutputContainer.innerHTML = '';
-		    	iFrameContainer.style.opacity = 1.0;
-		    }
-		    // console.log(eventOutputContainer.innerHTML);
-		};
+			    } else {
+			    	eventOutputContainer.innerHTML = '';
+			    	iFrameContainer.style.opacity = 1.0;
+			    }
+			    // console.log(eventOutputContainer.innerHTML);
+			};
 	</script>
 	<script>
 	$(document).ready(function() {

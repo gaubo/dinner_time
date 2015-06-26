@@ -113,10 +113,16 @@ def start():
         </div>
         '''
         menu_html = data['menu']
+        menu_html.replace('<ul class="list-group swiper-no-swiping">','')
+        menu_html.replace('</ul>','')
         menu_html = '''
         <div class = "col-xs-6">
         <div class = "menu">
+        <ul id="menu-roll" class="list-group swiper-no-swiping">
+        <marquee behavior="scroll" direction="up">
             ''' + menu_html + '''
+        </marquee>
+        </ul>
         </div>
         </div>
         '''

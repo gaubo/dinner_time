@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ -->	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<style>
+		.nav-block {
+			display:inline-block;
+		}
+	</style>
+	<script>
+		$(document).ready(function(){
+		    $("#hidebutton").click(function(){
+		        $("#dinner_time_banner").hide();
+		        $("#frameblock").css("opacity", 1.0)
+		    });
+		});
+	</script>
+</head>
+<body>
+    <nav class="navbar-form navbar-left" align="center">
+	    <div class="nav-block">
+	      <form role="form" method='POST' action='/'>
+	        <div class="form-group">
+	          <input type="text" name="url" class="form-control" id="url-box" placeholder="Enter URL..." style="max-width: 300px;">
+	          <button type="submit" class="btn btn-default">Submit</button>
+	          <br>
+	        </div>
+	      </form>
+	    </div>
+	    <div class="nav-block">
+	      <button id="hidebutton" class="btn btn-default">Hide</button>
+	      <br>
+	    </div>
+	    <br>
+    </nav>
+
+	<div id="dinner_time_banner" align="center"></div>
+	<br>
+    <div id='frameblock' class="container">
+	    {% block content %} 
+	    {% endblock content %}
+   	</div>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var eventOutputContainer = document.getElementById("dinner_time_banner");
+		var iFrameContainer = document.getElementById("frameblock");
+		var evtSrc = new EventSource("/subscribe");
+		evtSrc.onmessage = function(e) {
+		    console.log(e.data);
+		    //eventOutputContainer.innerHTML = e.data;
+<<<<<<< HEAD
+		    if (e.data=='start') {
+		    	eventOutputContainer.innerHTML = '<marquee behavior="scroll" direction="left"><div class="row"><div class="item-img col-xs-4"></div><div class="col-xs-8"><div class="item-header"><h4 class="item-name">Lamb Saag </h4></div><div class="dietary-info"><span class="label dietary-label">Gluten-Free</span></div><div class="item-body" style="margin-bottom: 10px;"> <div class="item-description">Lamb cooked with spinach and herbs</div></div></div></div></marquee>';
+		    	iFrameContainer.style.opacity = 0.2;
+		    	eventOutputContainer.style.opacity = 2.0;
+		    	eventOutputContainer.style.display = 'block';
+=======
+		    if (e.data!='end') {
+		    	eventOutputContainer.innerHTML = e.data
+>>>>>>> f5e2e858138053b6ac9bde043827c5a1f6ace918
+		    } else {
+		    	eventOutputContainer.innerHTML = '';
+		    	iFrameContainer.style.opacity = 1.0;
+		    }
+		    console.log(eventOutputContainer.innerHTML);
+		};
+	</script>
+</body>
+</html>
