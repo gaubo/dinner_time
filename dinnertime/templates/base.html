@@ -11,18 +11,27 @@
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	</script>
 	<style>
 		.dinner {
 			display: flex; /* equal height of the children */
 			flex-basis: 50px;
 		}
 		.menu {
-			display: -webkit-flex; /* Safari */
-		    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
-		    display: flex;   
-		    flex-wrap: wrap;
 		    height: 600px;
 		}
+
+		.list-group {
+			  text-align: justify;
+/*			  border: 10px solid black;
+*/			  height: 600px;
+			  overflow: hidden;
+		}
+
+		/*.list-group-item {
+    		display: inline-block;
+		}*/
+
 	</style>
 
 	<style>
@@ -186,12 +195,12 @@
 		    	iFrameContainer.style.opacity = 0.2;
 		    	eventOutputContainer.style.opacity = 2.0;
 		    	eventOutputContainer.style.display = 'block';
-		    } else {
-		    	eventOutputContainer.innerHTML = '';
-		    	iFrameContainer.style.opacity = 1.0;
-		    }
-		    // console.log(eventOutputContainer.innerHTML);
-		};
+			    } else {
+			    	eventOutputContainer.innerHTML = '';
+			    	iFrameContainer.style.opacity = 1.0;
+			    }
+			    // console.log(eventOutputContainer.innerHTML);
+			};
 	</script>
 	<script>
 	$(document).ready(function() {
