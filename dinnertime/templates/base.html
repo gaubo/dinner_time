@@ -248,8 +248,8 @@
 		evtSrc.onmessage = function(e) {
 		    console.log(e.data);
 		    //eventOutputContainer.innerHTML = e.data;
-		    if (e.data=='start') {
-		    	eventOutputContainer.innerHTML = '<marquee behavior="scroll" direction="left"><div class="row"><div class="item-img col-xs-4"></div><div class="col-xs-8"><div class="item-header"><h4 class="item-name">Lamb Saag </h4></div><div class="dietary-info"><span class="label dietary-label">Gluten-Free</span></div><div class="item-body" style="margin-bottom: 10px;"> <div class="item-description">Lamb cooked with spinach and herbs</div></div></div></div></marquee>';
+		    if (e.data!='end') {
+		    	eventOutputContainer.innerHTML = e.data
 		    	iFrameContainer.style.opacity = 0.2;
 		    	eventOutputContainer.style.opacity = 2.0;
 		    	eventOutputContainer.style.display = 'block';
@@ -257,7 +257,7 @@
 		    	eventOutputContainer.innerHTML = '';
 		    	iFrameContainer.style.opacity = 1.0;
 		    }
-		    console.log(eventOutputContainer.innerHTML);
+		    // console.log(eventOutputContainer.innerHTML);
 		};
 	</script>
 	<script>

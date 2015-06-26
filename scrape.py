@@ -1,5 +1,6 @@
 from lxml import html
 import urllib
+from datetime import date, datetime, timedelta
 
 def main():
     get_meal_info()
@@ -38,10 +39,42 @@ def get_meal_info():
 
         return meal_info
 
+def get_meal_info2():
+    url = "https://zerocater.com/menu/uVGcXhj/"
+    tree = html.fromstring(urllib.urlopen(url).read())
+    meals = tree.xpath('//div[@class="inherit-height meal-item"]')
+    i = 0
+    for meal in meals:
+        today = meal.xpath('.//span[@class="meal-is-today label"]/text()')
+        if len(today) > 0:
+            break
+
+        date = meal.xpath('.//h4[@class="overview-time"]/text()')
+        date_string = get_string(date)
+        date_string = ' '.join(date_string.split())
+        day = int(date_string[-2:].strip())
+        print day
+        print date_string
+        today = datetime.utcnow() - timedelta(hours=7)
+        print today.day
+        if today.day <= day:
+            break
+
+        i = i + 1
+
+    meal_today = meals[i]
+    vendor = meal_today.xpath('.//div[@class="overview-wrapper"]')[0]
+    menu = meal_today.xpath('.//ul[@class="list-group swiper-no-swiping"]')[0]
+    data = {}
+    data['overview'] = html.tostring(vendor)
+    data['menu'] = html.tostring(menu)
+    print data
+    return data
+
 def get_string(element):
     if len(element) == 0:
         return None
     return element[0].encode('utf-8').strip()
 
 if __name__ == "__main__":
-    main()
+    get_meal_info2()

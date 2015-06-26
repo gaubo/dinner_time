@@ -7,6 +7,7 @@ import datetime
 import gevent
 from gevent.wsgi import WSGIServer
 from gevent.queue import Queue
+from scrape import get_meal_info, get_meal_info2
 
 frontend = Blueprint('frontend',__name__)
 subscriptions = []
@@ -44,11 +45,88 @@ def index():
 
 @frontend.route("/start")
 def start():
+
+    def notify2():
+
+        meal_info = get_meal_info()
+        vendor_html = '''
+                <div class="dish">
+                    <div class="item-header">
+                        <h4 class="item-name">''' + meal_info['vendor'] + '''</h4>
+                    </div>
+                    <div class="dietary-info">
+                        <h6 class="item-name">''' + meal_info['order'] + '''</h4>
+                    </div>
+                    <div class="dietary-info">
+                        <h6 class="item-name">''' + meal_info['description'] + '''</h4>
+                    </div>
+                    <div class="dietary-info">
+                        <img src ="''' + meal_info['img_url'] + '''">
+                    </div>
+                </div>
+        '''
+
+        dish_html_format = '''
+                    <div class="item-header">
+                        <h4 class="item-name">{}</h4>
+                    </div>
+                    <div class="dietary-info">
+                        <h6 class="item-name">{}</h4>
+                    </div>
+        '''
+
+        dish_img_format = '''
+                    <div class="dietary-info">
+                        <img src ="{}">
+                    </div>
+        '''
+
+        items_html = ""
+        for item in meal_info['items']:
+            item_html = str.format(dish_html_format, item['name'], item['description'])
+            if item['img_url']:
+                item_html += str.format(dish_img_format, item['img_url'])
+            item_html = '''
+                <div class="dish">
+                    ''' + item_html + '''
+                </div>
+            '''
+            items_html += item_html
+        html = '''
+        <marquee behavior="scroll" direction="left">
+            <div class="row">
+                ''' + vendor_html + items_html + '''
+            </div>
+        </marquee>
+        '''
+
     def notify():
-        msg = 'start'
-        print msg
+
+        data = get_meal_info2()
+        overview_html = data['overview']
+        overview_html = '''
+        <div class = "overview">
+            ''' + overview_html + '''
+        </div>
+        '''
+        menu_html = data['menu']
+        menu_html = '''
+        <div class = "menu">
+        <marquee behavior="scroll" direction="up">
+            ''' + menu_html + '''
+        </marquee>
+        </div>
+        '''
+        html = '''
+        <div class = "dinner">
+            ''' + overview_html + menu_html + '''
+        </div>
+        '''
+        html = html.replace('\n', '')
+        print html
+
         for sub in subscriptions[:]:
-            sub.put(msg)
+            sub.put(html)
     
     gevent.spawn(notify)
     
@@ -80,5 +158,3 @@ def subscribe():
             subscriptions.remove(q)
 
     return Response(gen(), mimetype="text/event-stream")
-
-
