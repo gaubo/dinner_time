@@ -63,7 +63,7 @@ while True:
         GPIO.output(19,True)
         show_dinner_is_here()
         update_hip_chat()
-        time.sleep(10.0)
+        time.sleep(20.0)
         stop_showing_dinner_is_here()
         GPIO.output(19,False)
 
