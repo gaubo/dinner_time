@@ -18,23 +18,6 @@
 	</style>
 
 	<style>
-		/*a {
-			color: #69C;
-			text-decoration: none;
-		}
-		a:hover {
-			color: #F60;
-		}*/
-		/*h1 {
-			font: 1.7em;
-			line-height: 110%;
-			color: #000;
-		}
-		p {
-			margin: 0 0 20px;
-		}*/
-
-
 		input {
 			outline: none;
 		}
@@ -114,73 +97,18 @@
 		}
 
 		.parent2 {
-		  top:15px;
-		  left:15px;
+		  top:5px;
+		  left:5px;
 		  position:fixed;
 		  display:block;
-		  width:100px;
-		  height:100px;
+		  width:50px;
+		  height:50px;
 		  background-color:transparent;
 		  border-radius:50%;
 		  z-index:20;
 		  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 		  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 		  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-		}
-		.test1 {
-		  width:60%;
-		  height:60%;
-		  background-color:dimGray;
-		  border-radius:50%;
-		  position:absolute;
-		  color:white;
-		  text-align:center;
-		  line-height:70px;
-		  top:25%;
-		  left:25%;
-		  z-index:19;
-		  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
-		  position:absolute;
-		}
-		.test2 {
-		  width:60%;
-		  height:60%;
-		  background-color:dimGray;
-		  border-radius:50%;
-		  position:absolute;
-		  color:white;
-		  text-align:center;
-		  line-height:70px;
-		  top:25%;
-		  left:25%;
-		  z-index:19;
-		  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .2s;
-		}
-		.test3 {
-		  width:60%;
-		  height:60%;
-		  background-color:dimGray;
-		  border-radius:50%;
-		  position:absolute;
-		  color:white;
-		  text-align:center;
-		  line-height:70px;
-		    top:25%;
-		  left:25%;
-		  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .4s;  
-		}
-		  .test4 {
-		  width:60%;
-		  height:60%;
-		  background-color:dimGray;
-		  border-radius:50%;
-		  position:absolute;
-		  color:white;
-		  text-align:center;
-		  line-height:70px;
-		  top:25%;
-		  left:25%;
-		  transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550) .6s;  
 		}
 		.mask2 {
 		  top:15px;
@@ -209,33 +137,16 @@
 	</script>
 </head>
 <body>
-	<div class="parent2">
-	  <div id="hidebutton" class="test1"><i class="fa fa-times fa-2x"></i></div>
-	  <form id="demo-2" class="test2" role="form" method='POST' action='/'>
-		<input type="search" placeholder="Search" name="url">
-	  </form>
-	  <div class="test3"><i class="fa fa-code fa-2x"></i></div>
-	  <div class="test4"><i class="fa fa-envelope-o fa-2x"></i></div>
+	<div class="parent2" id="hidebutton">
 	  <div class="mask2"><i class="fa fa-home fa-3x"></i></div>
 	</div>
 
-    <!-- <nav class="navbar-form navbar-left" align="center">
-	    <div class="nav-block">
-	      <form role="form" method='POST' action='/'>
-	        <div class="form-group">
-	          <input type="text" name="url" class="form-control" id="url-box" placeholder="Enter URL..." style="max-width: 300px;">
-	          <button type="submit" class="btn btn-default">Submit</button>
-	          <br>
-	        </div>
-	      </form>
-	    </div>
-	    <div class="nav-block">
-	    </div>
-	    <br>
-    </nav> -->
+	<form id="demo-2" role="form" method='POST' action='/' align="right">
+		<input type="search" placeholder="Search" name="url">
+	</form>
+	<br>
 
 	<div id="dinner_time_banner" align="center"></div>
-	<br>
     <div id='frameblock' class="container">
 	    {% block content %} 
 	    {% endblock content %}
@@ -271,20 +182,20 @@
 		        $("#dinner_time_banner").hide();
 		        $("#frameblock").css("opacity", 1.0)
 		    });
-		    $('.parent2').on('mousedown touchstart', function() {
-			    if (!active1) $(this).find('.test1').css({'background-color': 'gray', 'transform': 'translate(0px,125px)'});
-			    else $(this).find('.test1').css({'background-color': 'dimGray', 'transform': 'none'}); 
-			     if (!active2) $(this).find('.test2').css({'background-color': 'gray', 'transform': 'translate(60px,105px)'});
-			    else $(this).find('.test2').css({'background-color': 'darkGray', 'transform': 'none'});
-			      if (!active3) $(this).find('.test3').css({'background-color': 'gray', 'transform': 'translate(105px,60px)'});
-			    else $(this).find('.test3').css({'background-color': 'silver', 'transform': 'none'});
-			      if (!active4) $(this).find('.test4').css({'background-color': 'gray', 'transform': 'translate(125px,0px)'});
-			    else $(this).find('.test4').css({'background-color': 'silver', 'transform': 'none'});
-			    active1 = !active1;
-			    active2 = !active2;
-			    active3 = !active3;
-			    active4 = !active4;
-		    });
+		    // $('.parent2').on('mousedown touchstart', function() {
+			   //  if (!active1) $(this).find('.test1').css({'background-color': 'gray', 'transform': 'translate(0px,125px)'});
+			   //  else $(this).find('.test1').css({'background-color': 'dimGray', 'transform': 'none'}); 
+			   //   if (!active2) $(this).find('.test2').css({'background-color': 'gray', 'transform': 'translate(60px,105px)'});
+			   //  else $(this).find('.test2').css({'background-color': 'darkGray', 'transform': 'none'});
+			   //    if (!active3) $(this).find('.test3').css({'background-color': 'gray', 'transform': 'translate(105px,60px)'});
+			   //  else $(this).find('.test3').css({'background-color': 'silver', 'transform': 'none'});
+			   //    if (!active4) $(this).find('.test4').css({'background-color': 'gray', 'transform': 'translate(125px,0px)'});
+			   //  else $(this).find('.test4').css({'background-color': 'silver', 'transform': 'none'});
+			   //  active1 = !active1;
+			   //  active2 = !active2;
+			   //  active3 = !active3;
+			   //  active4 = !active4;
+		    // });
 		});
 	</script>
 </body>
