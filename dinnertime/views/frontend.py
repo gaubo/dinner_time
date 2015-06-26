@@ -115,12 +115,12 @@ def start():
         menu_html = '''
         <div class = "col-xs-6">
         <div class = "menu">
-        <marquee behavior="scroll" direction="up">
             ''' + menu_html + '''
-        </marquee>
         </div>
         </div>
         '''
+
+        # <marquee behavior="scroll" direction="up"> </marquee>
         html = '''
         <div class = "container">
         <div class = "row">
