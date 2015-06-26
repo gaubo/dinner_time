@@ -12,8 +12,16 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<style>
-		.nav-block {
-			display:inline-block;
+		.dinner {
+			display: flex; /* equal height of the children */
+			flex-basis: 50px;
+		}
+		.menu {
+			display: -webkit-flex; /* Safari */
+		    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+		    display: flex;   
+		    flex-wrap: wrap;
+		    height: 600px;
 		}
 	</style>
 
