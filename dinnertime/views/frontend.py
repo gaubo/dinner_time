@@ -131,7 +131,6 @@ def start():
         </div>
         '''
         html = html.replace('\n', '')
-        print html
 
         for sub in subscriptions[:]:
             sub.put(html)
