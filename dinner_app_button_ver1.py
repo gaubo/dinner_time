@@ -14,7 +14,7 @@ def update_hip_chat():
     V2TOKEN = 'E7CxTea1vztonzfDCvEqPJYJWkDGola4UzPnKB0A'
     ROOMID = 1670106
     url = 'https://api.hipchat.com/v2/room/%d/notification' % ROOMID
-    message = "Dinner Is Here!"
+    message = "Dinner Is Here! <a href="https://zerocater.com/menu/uVGcXhj/"> Menu </a>"
     headers = {
         "content-type": "application/json",
         "authorization": "Bearer %s" % V2TOKEN}
