@@ -107,6 +107,7 @@ def start():
         overview_html = '''
         <div class = "col-xs-6">
         <div class = "overview">
+        <h1>Dinner is served!</h1>
             ''' + overview_html + '''
         </div>
         </div>
@@ -120,7 +121,6 @@ def start():
         </div>
         '''
 
-        # <marquee behavior="scroll" direction="up"> </marquee>
         html = '''
         <div class = "container">
         <div class = "row">
