@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-
+    <style>
+	  /*body {
+		#alertblock,
+		#frameblock {
+		  width: 100%;
+		  height: 100%;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		}
+		#frameblock {
+		  z-index: -1;
+		}
+	  }*/
+	</style>
 </head>
-<body>
+<body>	
     <nav class="top-bar">
-	    <div class="container" align="center">
+	    <div id='alertblock' class="container" align="center">
 	      <form role="form" method='POST' action='/'>
 	        <div class="form-group">
 	          <input type="text" name="url" class="form-control" id="url-box" placeholder="Enter URL..." style="max-width: 300px;">
@@ -16,23 +30,29 @@
 	        <br>
 	      </form>
 	    </div>
-	    <div id="event" align="center"></div>
 	    <br>
     </nav>
 
-    {% block content %} 
-    {% endblock content %}
+	<div id="event" align="center"></div>
+    <div id='frameblock' class="container">
+	    {% block content %} 
+	    {% endblock content %}
+   	</div>
 	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		var eventOutputContainer = document.getElementById("event");
 		var evtSrc = new EventSource("/subscribe");
-
 		evtSrc.onmessage = function(e) {
 		    console.log(e.data);
-		    eventOutputContainer.innerHTML = e.data;
+		    //eventOutputContainer.innerHTML = e.data;
+		    if (e.data=='start') {
+		    	eventOutputContainer.innerHTML = '<marquee behavior="scroll" direction="left"><div class="row"><div class="item-img col-xs-4"></div><div class="col-xs-8"><div class="item-header"><h4 class="item-name">Lamb Saag </h4></div><div class="dietary-info"><span class="label dietary-label">Gluten-Free</span></div><div class="item-body" style="margin-bottom: 10px;"> <div class="item-description">Lamb cooked with spinach and herbs</div></div></div></div></marquee>';
+		    } else {
+		    	eventOutputContainer.innerHTML = '';
+		    }
+		    console.log(eventOutputContainer.innerHTML);
 		};
 	</script>
-  </body>
 </body>
 </html>

@@ -42,10 +42,23 @@ def index():
     print url
     return render_template('index.html', iframe=url)
 
-@frontend.route("/publish")
-def publish():
+@frontend.route("/start")
+def start():
     def notify():
-        msg = 'Dinner is here at: ' + str(datetime.datetime.now())
+        msg = 'start'
+        print msg
+        for sub in subscriptions[:]:
+            sub.put(msg)
+    
+    gevent.spawn(notify)
+    
+    return "Message sent ..."
+
+@frontend.route("/end")
+def end():
+    def notify():
+        msg = 'end'
+        print msg
         for sub in subscriptions[:]:
             sub.put(msg)
     
