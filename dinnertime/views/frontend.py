@@ -105,21 +105,29 @@ def start():
         data = get_meal_info2()
         overview_html = data['overview']
         overview_html = '''
+        <div class = "col-xs-6">
         <div class = "overview">
             ''' + overview_html + '''
+        </div>
         </div>
         '''
         menu_html = data['menu']
         menu_html = '''
+        <div class = "col-xs-6">
         <div class = "menu">
         <marquee behavior="scroll" direction="up">
             ''' + menu_html + '''
         </marquee>
         </div>
+        </div>
         '''
         html = '''
+        <div class = "container">
+        <div class = "row">
         <div class = "dinner">
             ''' + overview_html + menu_html + '''
+        </div>
+        </div>
         </div>
         '''
         html = html.replace('\n', '')

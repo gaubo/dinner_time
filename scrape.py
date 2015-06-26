@@ -53,10 +53,7 @@ def get_meal_info2():
         date_string = get_string(date)
         date_string = ' '.join(date_string.split())
         day = int(date_string[-2:].strip())
-        print day
-        print date_string
         today = datetime.utcnow() - timedelta(hours=7)
-        print today.day
         if today.day <= day:
             break
 
@@ -68,7 +65,6 @@ def get_meal_info2():
     data = {}
     data['overview'] = html.tostring(vendor)
     data['menu'] = html.tostring(menu)
-    print data
     return data
 
 def get_string(element):
