@@ -54,8 +54,6 @@ def get_meal_info2():
         date_string = ' '.join(date_string.split())
         day = int(date_string[-2:].strip())
         today = datetime.utcnow() - timedelta(hours=7)
-        if day == 24:
-            break
         if today.day <= day:
             break
 
